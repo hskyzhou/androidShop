@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,7 +17,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // App Logo
+        toolbar.setLogo(R.drawable.buy);
+        // Title
+        toolbar.setTitle("My Title");
+        // Sub Title
+        toolbar.setSubtitle("Sub title");
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.buy);
+        toolbar.setOnMenuItemClickListener(onMenuItemClick);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,4 +58,27 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem menuItem) {
+            String msg = "";
+            switch (menuItem.getItemId()) {
+                case R.id.action_edit:
+                    msg += "Click edit";
+                    break;
+                case R.id.action_share:
+                    msg += "Click share";
+                    break;
+                case R.id.action_settings:
+                    msg += "Click setting";
+                    break;
+            }
+
+            if(!msg.equals("")) {
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        }
+    };
 }
