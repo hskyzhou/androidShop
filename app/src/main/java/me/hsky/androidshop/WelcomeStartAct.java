@@ -38,7 +38,7 @@ public class WelcomeStartAct extends AppCompatActivity {
 
         @Override
         public void run() {
-            startActivity(new Intent(WelcomeStartAct.this, MainActivity.class));
+            startActivity(new Intent(WelcomeStartAct.this, WelcomeGuide.class));
         }
     }
 }
