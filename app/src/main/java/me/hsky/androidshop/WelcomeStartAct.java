@@ -14,6 +14,8 @@ import android.view.View;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import me.hsky.androidshop.utils.SharedUtils;
+
 public class WelcomeStartAct extends AppCompatActivity {
 
     @Override
@@ -38,7 +40,14 @@ public class WelcomeStartAct extends AppCompatActivity {
 
         @Override
         public void run() {
-            startActivity(new Intent(WelcomeStartAct.this, WelcomeGuide.class));
+            /*不是第一次启动*/
+            if(SharedUtils.getWelcomeBoolean(getBaseContext())){
+                startActivity(new Intent(getBaseContext(), MainActivity.class));
+            }else{
+                startActivity(new Intent(getBaseContext(), WelcomeGuide.class));
+                SharedUtils.setWelcomeBoolean(getBaseContext(), true);
+            }
+            finish();
         }
     }
 }

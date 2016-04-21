@@ -41,7 +41,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".WelcomeGuide"></activity>
+        <activity android:name=".WelcomeGuide" />
+        <activity android:name=".fragment.MainHome" />
+        <activity android:name=".fragment.MainProject" />
+        <activity android:name=".fragment.MainBuy" />
+        <activity android:name=".fragment.MainMe"></activity>
     </application>
 
 </manifest>
