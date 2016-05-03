@@ -13,6 +13,7 @@
     </FrameLayout>
 
     <RadioGroup
+        android:id="@+id/group_bottom_btn"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -23,11 +24,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/index2"
+            android:drawableTop="@drawable/selector_home"
             android:gravity="center"
-            android:drawablePadding="6dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:drawablePadding="12dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
             />
         <RadioButton
             android:id="@+id/main_project"
@@ -36,11 +39,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/all1"
+            android:drawableTop="@drawable/selector_project"
             android:gravity="center"
-            android:drawablePadding="6dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:drawablePadding="12dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
             />
         <RadioButton
             android:id="@+id/main_buy"
@@ -49,11 +54,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/sc1"
+            android:drawableTop="@drawable/selector_buy"
             android:gravity="center"
-            android:drawablePadding="6dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:drawablePadding="12dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
             />
         <RadioButton
             android:id="@+id/main_me"
@@ -62,12 +69,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@null"
-            android:drawableTop="@drawable/me1"
+            android:drawableTop="@drawable/selector_me"
             android:gravity="center"
-            android:drawablePadding="6dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-
+            android:drawablePadding="12dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
             />
     </RadioGroup>
 </LinearLayout>

@@ -24,13 +24,14 @@
         <!--4个图标-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -45,13 +46,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorTopText"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -66,13 +68,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorTopText"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -87,13 +90,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorTopText"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -108,32 +112,36 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorTopText"
                     android:layout_marginTop="10dp"/>
             </LinearLayout>
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="#F5F5F5"/>
+            android:background="#f5f5f5"/>
 
         <!--限量秒杀-->
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:layout_marginBottom="20dp"
+                >
+
                 <TextView
                     android:text="限量秒杀"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="26sp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal"/>
@@ -143,9 +151,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#bfbfbf"
                     android:layout_marginRight="20dp"/>
             </RelativeLayout>
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8">
+
+
+            </ListView>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -155,76 +173,89 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <ImageView
-                        android:src="@drawable/buy"
+                        android:background="#ccc"
                         android:layout_width="match_parent"
                         android:layout_height="125dp" />
                     <TextView
                         android:text="产品1"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginLeft="20dp"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
                     <TextView
                         android:text="1000元"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:gravity="right"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="5dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:src="@drawable/buy"
-                        android:layout_width="match_parent"
-                        android:layout_height="125dp" />
-                    <TextView
-                        android:text="产品1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"/>
-                    <TextView
-                        android:text="价格1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="20dp"
-                        android:gravity="right"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:src="@drawable/buy"
-                        android:layout_width="match_parent"
-                        android:layout_height="125dp" />
-                    <TextView
-                        android:text="产品1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="#1d91bc"
                         />
-                    <TextView
-                        android:text="价格1"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:background="#ddd"
                         android:layout_width="match_parent"
+                        android:layout_height="125dp" />
+                    <TextView
+                        android:text="产品1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:text="1000元"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:gravity="right"
-                        android:layout_marginRight="20dp"/>
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="#1d91bc"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:background="#ccc"
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp" />
+                    <TextView
+                        android:text="产品1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:text="1000元"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="#1d91bc"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -240,27 +271,34 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2">
+                android:layout_weight="2"
+                android:layout_marginBottom="20dp"
+                >
+
                 <TextView
                     android:text="分类促销"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="26sp"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center_horizontal"/>
 
                 <TextView
                     android:text="更多"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#bfbfbf"
                     android:layout_marginRight="20dp"/>
             </RelativeLayout>
 
@@ -273,76 +311,89 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <ImageView
-                        android:src="@drawable/buy"
+                        android:background="#ccc"
                         android:layout_width="match_parent"
                         android:layout_height="125dp" />
                     <TextView
                         android:text="产品1"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"/>
+                        android:layout_marginLeft="20dp"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
                     <TextView
                         android:text="1000元"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:gravity="right"
                         android:layout_marginRight="20dp"
-                        android:layout_marginTop="5dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:src="@drawable/buy"
-                        android:layout_width="match_parent"
-                        android:layout_height="125dp" />
-                    <TextView
-                        android:text="产品1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"/>
-                    <TextView
-                        android:text="价格1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="20dp"
-                        android:gravity="right"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
-                    <ImageView
-                        android:src="@drawable/buy"
-                        android:layout_width="match_parent"
-                        android:layout_height="125dp" />
-                    <TextView
-                        android:text="产品1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="#1d91bc"
                         />
-                    <TextView
-                        android:text="价格1"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:background="#ddd"
                         android:layout_width="match_parent"
+                        android:layout_height="125dp" />
+                    <TextView
+                        android:text="产品1"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:text="1000元"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
                         android:gravity="right"
-                        android:layout_marginRight="20dp"/>
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="#1d91bc"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:background="#ccc"
+                        android:layout_width="match_parent"
+                        android:layout_height="125dp" />
+                    <TextView
+                        android:text="产品1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="18sp"
+                        android:layout_marginTop="20dp"/>
+                    <TextView
+                        android:text="1000元"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="10dp"
+                        android:textSize="16sp"
+                        android:textColor="#1d91bc"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -360,23 +411,29 @@
             android:layout_marginTop="20dp">
 
             <RelativeLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                >
+
                 <TextView
                     android:text="分类促销"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="26sp"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"/>
 
                 <TextView
                     android:text="更多"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:textColor="#bfbfbf"
                     android:layout_marginRight="20dp"/>
             </RelativeLayout>
             <LinearLayout
@@ -385,17 +442,17 @@
                 android:layout_height="0dp"
                 android:layout_weight="2">
                 <ImageView
-                    android:src="@drawable/buy"
+                    android:background="#ccc"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:src="@drawable/buy"
+                    android:background="#ddd"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
                 <ImageView
-                    android:src="@drawable/buy"
+                    android:background="#ccc"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>

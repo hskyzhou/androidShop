@@ -32,7 +32,7 @@ public class WelcomeGuide extends AppCompatActivity {
         setContentView(R.layout.welcome_guide);
 
         x.view().inject(this);
-        x.Ext.setDebug(BuildConfig.DEBUG);
+//        x.Ext.setDebug(BuildConfig.DEBUG);
 
         initViewPager();
 

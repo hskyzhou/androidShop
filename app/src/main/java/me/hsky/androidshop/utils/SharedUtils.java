@@ -22,4 +22,16 @@ public class SharedUtils{
         editor.putBoolean(MODE_NAME, isFirst);
         editor.commit();
     }
+
+    /*获取boolean类型的值*/
+    public static String getCityName(Context context){
+        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getString("cityName", "选择城市");
+    }
+
+    /*写入boolean类型的值*/
+    public static void setCityName(Context context, String cityName){
+        Editor editor = context.getSharedPreferences(FILE_NAME, Context.MODE_APPEND).edit();
+        editor.putString("cityName", cityName);
+        editor.commit();
+    }
 }
