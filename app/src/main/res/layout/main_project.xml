@@ -7,9 +7,61 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="me.hsky.androidshop.fragment.MainProject">
+    tools:context="me.hsky.androidshop.fragment.MainProject"
+    android:background="@color/ColorHeader">
     <TextView
-        android:text="产品"
+        android:id="@+id/project_title"
+        android:text="全部产品"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:layout_below="@id/project_title"
+        android:layout_width="405dp"
+        android:layout_height="40dp"
+        android:hint="输入产品名称搜索"
+        android:textColorHint="#ccc"
+        android:drawableLeft="@drawable/project_search"
+        android:background="@drawable/project_search_round"
+        android:paddingLeft="80dp"
+        android:drawablePadding="10dp"
+        android:inputType="text"
+        android:layout_marginTop="20dp"
+        />
+
+    <HorizontalScrollView
+        android:id="@+id/project_major_catagory"
+        android:layout_below="@id/project_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+        <LinearLayout
+            android:id="@+id/project_major_catagory_linear"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/project_linear"
+        android:layout_below="@id/project_major_catagory"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></ListView>
+
+        <ListView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"></ListView>
+    </LinearLayout>
 </RelativeLayout>
