@@ -64,7 +64,7 @@ public class ProjectListAdapter extends BaseAdapter {
         myHolder.project_relativelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "点击了商品",Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "点击了商品",Toast.LENGTH_SHORT).show();
             }
         });
 

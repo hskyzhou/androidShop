@@ -1,5 +1,6 @@
 package me.hsky.androidshop.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,10 @@ import me.hsky.androidshop.R;
  */
 public class ProjectSecondCataAdapter extends BaseAdapter {
     private String[] catagory;
-    public ProjectSecondCataAdapter(String[] catagory){
+    private Context context;
+    public ProjectSecondCataAdapter(String[] catagory,Context context){
         this.catagory = catagory;
+        this.context = context;
     }
     @Override
     public int getCount() {
@@ -68,6 +71,7 @@ public class ProjectSecondCataAdapter extends BaseAdapter {
                 currentHolder.project_item_second.setBackgroundColor(parent.getResources().getColor(R.color.colorProjectCataWord));
                 currentHolder.project_item_second_catagory_name.setTextColor(parent.getResources().getColor(R.color.white));
                 currentHolder.project_item_second_catagory_name.setEnabled(false);
+
             }
         });
 

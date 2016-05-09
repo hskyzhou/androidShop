@@ -44,7 +44,7 @@ public class MainProject extends Fragment {
     private String[] firstCatas = null;
     private String[] secondCatas = null;
 
-    private LinkedList<Shop> shopList;
+    private LinkedList<Shop> shopList = new LinkedList<Shop>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -125,18 +125,16 @@ public class MainProject extends Fragment {
 
     /*显示二级分类*/
     public void showSecondCatagory() {
-        project_second_catagory.setAdapter(new ProjectSecondCataAdapter(secondCatas));
+        project_second_catagory.setAdapter(new ProjectSecondCataAdapter(secondCatas, getContext()));
     }
 
     /*获取二级分类*/
     public void initSecondCatagory(String parent) {
         RequestParams params = new RequestParams("http://api.hsky.me/api/secondcata");
         params.addQueryStringParameter("parent", parent);
-        Log.i(TAG, "initSecondCatagory: " + params);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i(TAG, "onSuccess: " + result);
                 Gson gson = new Gson();
                 secondCatas = gson.fromJson(result, String[].class);
                 showSecondCatagory();
@@ -161,27 +159,22 @@ public class MainProject extends Fragment {
         });
     }
 
-
-    /*显示全部产品数据详情*/
-    public void showProjectList() {
-        project_content_list.setAdapter(new ProjectListAdapter(shopList, getContext()));
-    }
-
     /*初始化产品列表*/
     public void initProjectList(String cata) {
         RequestParams params = new RequestParams("http://api.hsky.me/api/projectlist");
         params.addQueryStringParameter("cata", cata);
-        Log.i(TAG, "initSecondCatagory: " + params);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i(TAG, "onSuccess: " + result);
                 Gson gson = new Gson();
                 String[] temString = gson.fromJson(result, String[].class);
+                Log.i(TAG, "onSuccess: " + temString.length);
                 for (int i = 0; i < temString.length; i++) {
-                    shopList.add(new Shop("产品3", "3000", R.drawable.buy, "单位描述", "盒", "200"));
+                    Log.i(TAG, "onSuccess: " + i);
+                    shopList.add(new Shop(temString[i], "3000", R.drawable.buy, "单位描述", "盒", "200"));
                 }
-                showProjectList();
+                Log.i(TAG, "onSuccess: " + shopList);
+                project_content_list.setAdapter(new ProjectListAdapter(shopList, getContext()));
             }
 
             @Override
