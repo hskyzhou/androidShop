@@ -5,10 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -25,6 +23,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     private RadioButton main_home;
 
     private FragmentManager fm;
+    Fragment[] cacheFragment = new Fragment[4];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId){
             case R.id.main_home:
+
                 changeFragment(new MainHome(), true);
                 break;
             case R.id.main_project:

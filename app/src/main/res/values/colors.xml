@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="ColorHeader">#1D91BC</color>
     <color name="colorTopText">#3b3b3b</color>
     <color name="colorTopDiv">#3b3b3b</color>
+    <color name="colorProjectCataWord">#5aafce</color>
+    <color name="colorProjectSecondList">#ebebeb</color>
+    <color name="colorProjectFirstWord">#a6a6a6</color>
     </resources>
+
