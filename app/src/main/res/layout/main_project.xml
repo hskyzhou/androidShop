@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="me.hsky.androidshop.fragment.MainProject"
     android:background="@color/ColorHeader">
     <TextView
@@ -17,33 +16,39 @@
 
     <EditText
         android:layout_below="@id/project_title"
-        android:layout_width="405dp"
-        android:layout_height="40dp"
+        android:layout_width="280dp"
+        android:layout_height="30dp"
         android:hint="输入产品名称搜索"
         android:textColorHint="#ccc"
         android:drawableLeft="@drawable/project_search"
         android:background="@drawable/project_search_round"
-        android:paddingLeft="80dp"
         android:drawablePadding="10dp"
-        android:inputType="text"
+        android:paddingLeft="40dp"
         android:layout_marginTop="20dp"
-        />
+        android:inputType="text"
+        android:layout_centerInParent="true"
+        android:textSize="14sp"/>
 
     <HorizontalScrollView
         android:id="@+id/project_major_catagory"
         android:layout_below="@id/project_title"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="100dp"
+        android:layout_height="wrap_content"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:layout_marginTop="90dp"
         android:scrollbars="none"
         android:overScrollMode="never"
-        android:background="#fff">
+        android:background="#fff"
+        android:fillViewport="false"
+        android:layout_centerInParent="true">
         <LinearLayout
             android:id="@+id/project_major_catagory_linear"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center">
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -51,7 +56,8 @@
         android:id="@+id/project_linear"
         android:layout_below="@id/project_major_catagory"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
         <ListView
             android:id="@+id/project_second_catagory"
             android:layout_width="0dp"
@@ -63,7 +69,8 @@
             android:id="@+id/project_content_list"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="#fff"></ListView>
+            android:layout_weight="3"
+            android:background="@color/white">
+        </ListView>
     </LinearLayout>
 </RelativeLayout>
