@@ -18,7 +18,7 @@ import me.hsky.androidshop.R;
  */
 public class ProjectSecondCataAdapter extends BaseAdapter {
     private String[] catagory;
-    private Context context;
+    private final Context context;
     public ProjectSecondCataAdapter(String[] catagory,Context context){
         this.catagory = catagory;
         this.context = context;
@@ -71,6 +71,7 @@ public class ProjectSecondCataAdapter extends BaseAdapter {
                 currentHolder.project_item_second.setBackgroundColor(parent.getResources().getColor(R.color.colorProjectCataWord));
                 currentHolder.project_item_second_catagory_name.setTextColor(parent.getResources().getColor(R.color.white));
                 currentHolder.project_item_second_catagory_name.setEnabled(false);
+                /*进行产品列表获取*/
 
             }
         });

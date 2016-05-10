@@ -6,9 +6,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +46,7 @@ public class MainProject extends Fragment {
     private String[] firstCatas = null;
     private String[] secondCatas = null;
 
-    private LinkedList<Shop> shopList = new LinkedList<Shop>();
+    private LinkedList<Shop> shopList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -84,7 +86,6 @@ public class MainProject extends Fragment {
                     newHolder.project_item_first_catagory_text.setEnabled(false);
 
                     initSecondCatagory(firstCatas[number] + "");
-                    Toast.makeText(getContext(), firstCatas[number] + "", Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -102,7 +103,6 @@ public class MainProject extends Fragment {
                 firstCatas = gson.fromJson(result, String[].class);
                 showFirstCata();
                 initSecondCatagory(firstCatas[0]);
-                Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -123,11 +123,6 @@ public class MainProject extends Fragment {
         });
     }
 
-    /*显示二级分类*/
-    public void showSecondCatagory() {
-        project_second_catagory.setAdapter(new ProjectSecondCataAdapter(secondCatas, getContext()));
-    }
-
     /*获取二级分类*/
     public void initSecondCatagory(String parent) {
         RequestParams params = new RequestParams("http://api.hsky.me/api/secondcata");
@@ -135,11 +130,13 @@ public class MainProject extends Fragment {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
+                /*获取数据*/
                 Gson gson = new Gson();
                 secondCatas = gson.fromJson(result, String[].class);
-                showSecondCatagory();
+                /*显示二级分类*/
+                project_second_catagory.setAdapter(new ProjectSecondCataAdapter(secondCatas));
+                /*初始化产品列表*/
                 initProjectList(secondCatas[0]);
-                Toast.makeText(getContext(), result, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -168,12 +165,10 @@ public class MainProject extends Fragment {
             public void onSuccess(String result) {
                 Gson gson = new Gson();
                 String[] temString = gson.fromJson(result, String[].class);
-                Log.i(TAG, "onSuccess: " + temString.length);
+                shopList = new LinkedList<Shop>();
                 for (int i = 0; i < temString.length; i++) {
-                    Log.i(TAG, "onSuccess: " + i);
                     shopList.add(new Shop(temString[i], "3000", R.drawable.buy, "单位描述", "盒", "200"));
                 }
-                Log.i(TAG, "onSuccess: " + shopList);
                 project_content_list.setAdapter(new ProjectListAdapter(shopList, getContext()));
             }
 
@@ -197,5 +192,79 @@ public class MainProject extends Fragment {
     public class FirstCataHolder {
         @ViewInject(R.id.project_item_first_catagory_text)
         public TextView project_item_first_catagory_text;
+    }
+
+    public class ProjectSecondCataAdapter extends BaseAdapter {
+        private String[] catagory;
+        public ProjectSecondCataAdapter(String[] catagory){
+            this.catagory = catagory;
+        }
+        @Override
+        public int getCount() {
+            return catagory.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, final ViewGroup parent) {
+            SecondCataHolder myHolder = null;
+            if(convertView == null){
+                myHolder = new SecondCataHolder();
+                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.project_second_catagory_item, null);
+                x.view().inject(myHolder, convertView);
+                convertView.setTag(myHolder);
+            }else{
+                myHolder = (SecondCataHolder) convertView.getTag();
+            }
+
+            myHolder.project_item_second_catagory_number.setText("");
+            myHolder.project_item_second_catagory_name.setText(catagory[position]);
+            if(0 == position){
+                myHolder.project_item_second.setBackgroundColor(parent.getResources().getColor(R.color.colorProjectCataWord));
+                myHolder.project_item_second_catagory_name.setTextColor(parent.getResources().getColor(R.color.white));
+            }
+
+            final int k = position;
+            myHolder.project_item_second.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (int i = 0; i < catagory.length; i++) {
+                        SecondCataHolder holder = (SecondCataHolder) parent.getChildAt(i).getTag();
+                        holder.project_item_second.setBackgroundColor(parent.getResources().getColor(R.color.colorProjectSecondList));
+                        holder.project_item_second_catagory_name.setTextColor(parent.getResources().getColor(R.color.black));
+                        holder.project_item_second_catagory_name.setEnabled(true);
+                    }
+                    // 设置当前position的TextView背景为红色，不可点击
+                    SecondCataHolder currentHolder = (SecondCataHolder) v.getTag();
+                    currentHolder.project_item_second.setBackgroundColor(parent.getResources().getColor(R.color.colorProjectCataWord));
+                    currentHolder.project_item_second_catagory_name.setTextColor(parent.getResources().getColor(R.color.white));
+                    currentHolder.project_item_second_catagory_name.setEnabled(false);
+                    /*进行产品列表获取*/
+                    initProjectList(catagory[k]);
+                }
+            });
+
+            return convertView;
+        }
+
+        public class SecondCataHolder{
+            @ViewInject(R.id.project_item_second)
+            public RelativeLayout project_item_second;
+
+            @ViewInject(R.id.project_item_second_catagory_number)
+            public TextView project_item_second_catagory_number;
+
+            @ViewInject(R.id.project_item_second_catagory_name)
+            public TextView project_item_second_catagory_name;
+        }
     }
 }
