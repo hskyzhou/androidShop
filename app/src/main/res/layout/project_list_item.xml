@@ -39,19 +39,6 @@
             android:scaleX="0.4"
             android:scaleY="0.4"
             android:id="@+id/project_add"
-            android:src="@drawable/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:text="1"
-            android:id="@+id/project_number"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"/>
-        <ImageView
-            android:scaleX="0.4"
-            android:scaleY="0.4"
-            android:id="@+id/project_sub"
             android:src="@drawable/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
