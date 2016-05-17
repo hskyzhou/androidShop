@@ -47,7 +47,7 @@
         <activity android:name=".fragment.MainMe" />
         <activity android:name=".fragment.CityActivity" />
         <activity
-            android:name=".userlogin"
+            android:name=".UserLogin"
             android:label="@string/title_activity_userlogin"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

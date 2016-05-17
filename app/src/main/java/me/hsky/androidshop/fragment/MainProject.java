@@ -26,6 +26,7 @@ import java.util.LinkedList;
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.adapter.ProjectListAdapter;
 import me.hsky.androidshop.adapter.ProjectSecondCataAdapter;
+import me.hsky.androidshop.consts.CONSTS;
 import me.hsky.androidshop.data.Shop;
 
 public class MainProject extends Fragment {
@@ -95,7 +96,7 @@ public class MainProject extends Fragment {
 
     /*获取一级分类数据*/
     public void initFirstCatagory() {
-        RequestParams params = new RequestParams("http://api.hsky.me/api/firstcata");
+        RequestParams params = new RequestParams(CONSTS.FirstCatagory);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -125,7 +126,7 @@ public class MainProject extends Fragment {
 
     /*获取二级分类*/
     public void initSecondCatagory(String parent) {
-        RequestParams params = new RequestParams("http://api.hsky.me/api/secondcata");
+        RequestParams params = new RequestParams(CONSTS.SecondCatagory);
         params.addQueryStringParameter("parent", parent);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
@@ -158,7 +159,7 @@ public class MainProject extends Fragment {
 
     /*初始化产品列表*/
     public void initProjectList(String cata) {
-        RequestParams params = new RequestParams("http://api.hsky.me/api/projectlist");
+        RequestParams params = new RequestParams(CONSTS.ProjectListUrl);
         params.addQueryStringParameter("cata", cata);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override

@@ -1,6 +1,7 @@
 package me.hsky.androidshop.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,10 @@ import org.xutils.x;
 import java.util.LinkedList;
 
 import me.hsky.androidshop.R;
+import me.hsky.androidshop.UserLogin;
 import me.hsky.androidshop.data.Shop;
+import me.hsky.androidshop.utils.SharedUtils;
+
 
 /**
  * Created by user on 2016/5/9.
@@ -61,6 +65,22 @@ public class ProjectListAdapter extends BaseAdapter {
         myHolder.project_price_unit.setText(projectList.get(position).getPrice() + "/" + projectList.get(position).getUnit());
         myHolder.project_standard.setText(projectList.get(position).getStandard());
 
+        myHolder.project_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "增加商品数量", Toast.LENGTH_SHORT).show();
+
+                v.getContext().startActivity(new Intent(v.getContext(), UserLogin.class));
+                SharedUtils.setWelcomeBoolean(v.getContext(), true);
+            }
+        });
+
+        myHolder.project_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "减少商品数量", Toast.LENGTH_SHORT).show();
+            }
+        });
         myHolder.project_relativelayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,5 +109,14 @@ public class ProjectListAdapter extends BaseAdapter {
 
         @ViewInject(R.id.project_standard)
         public TextView project_standard;
+
+        @ViewInject(R.id.project_add)
+        public ImageView project_add;
+
+        @ViewInject(R.id.buy_number)
+        public ImageView buy_number;
+
+        @ViewInject(R.id.project_delete)
+        public ImageView project_delete;
     }
 }
