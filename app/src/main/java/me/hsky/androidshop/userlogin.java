@@ -2,22 +2,38 @@ package me.hsky.androidshop;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.renderscript.Type;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.w3c.dom.Text;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.util.Collection;
+
+import me.hsky.androidshop.consts.CONSTS;
+import me.hsky.androidshop.data.ResponseLogin;
+
 public class UserLogin extends AppCompatActivity {
+    private static final String TAG = "tag";
     /*ui interface*/
     @ViewInject(R.id.username)
     private AutoCompleteTextView username;
@@ -26,11 +42,6 @@ public class UserLogin extends AppCompatActivity {
     @ViewInject(R.id.btnLogin)
     private Button btnLogin;
 
-    private UserLoginTask mAuthTask = null;
-
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +49,15 @@ public class UserLogin extends AppCompatActivity {
 
         /*引入注解*/
         x.view().inject(this);
+    }
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+    @Event(R.id.btnLogin)
+    private void onLoginClick(View view){
+//        Toast.makeText(getBaseContext(), "点击登录", Toast.LENGTH_SHORT).show();
+        attemptLogin();
     }
 
     private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
         // Reset errors.
         username.setError(null);
         pwd.setError(null);
@@ -63,22 +69,18 @@ public class UserLogin extends AppCompatActivity {
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            pwd.setError(getString(R.string.error_invalid_password));
-            focusView = pwd;
-            cancel = true;
-        }
-
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            username.setError(getString(R.string.error_field_required));
+            username.setError("用户名不能为空");
             focusView = username;
             cancel = true;
-        } else if (!isEmailValid(email)) {
-            username.setError(getString(R.string.error_invalid_email));
-            focusView = username;
-            cancel = true;
+        }else{
+            // Check for a valid password, if the user entered one.
+            if(TextUtils.isEmpty(password)){
+                pwd.setError("密码不能为空");
+                focusView = pwd;
+                cancel  = true;
+            }
         }
 
         if (cancel) {
@@ -86,63 +88,47 @@ public class UserLogin extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-//            mAuthTask = new UserLoginTask(email, password);
-//            mAuthTask.execute((Void) null);
             /*调用接口--进行登录*/
+            RequestParams params = new RequestParams(CONSTS.LoginUrl);
 
-        }
-    }
+            params.addQueryStringParameter("username",email );
+            params.addQueryStringParameter("password", password);
+            Log.i(TAG, "attemptLogin: " + params);
+            x.http().get(params, new Callback.CommonCallback<String>() {
+                @Override
+                public void onSuccess(String result) {
+                    Log.i(TAG, "onSuccess: " + result);
+                    Gson gson = new Gson();
+//                    Type collectionType = (Type) new TypeToken<Collection<ResponseLogin>>(){}.getType();
+//                    Collection<ResponseLogin> loginInfo = gson.fromJson(result, (java.lang.reflect.Type) collectionType);
 
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+                    ResponseLogin loginInfo = gson.fromJson(result, ResponseLogin.class);
+                    Log.i(TAG, "onSuccess: " + loginInfo.message);
+                    Log.i(TAG, "onSuccess: " + loginInfo.result);
 
-        private final String loginName;
-        private final String mPassword;
+                    Toast.makeText(getBaseContext(), loginInfo.message, Toast.LENGTH_SHORT).show();
+                    if (loginInfo.result == "1") {
+                        /*返回上一个activity*/
 
-        UserLoginTask(String email, String password) {
-            loginName = email;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(loginName)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                    }
                 }
-            }
 
-            // TODO: register the new account here.
-            return true;
-        }
+                @Override
+                public void onError(Throwable ex, boolean isOnCallback) {
+                    Log.i(TAG, "onError: " + ex.toString());
+                    Toast.makeText(getBaseContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
+                @Override
+                public void onCancelled(CancelledException cex) {
+                    Toast.makeText(getBaseContext(), "cancelled", Toast.LENGTH_LONG).show();
+                }
 
-            if (success) {
-                finish();
-            } else {
-                pwd.setError(getString(R.string.error_incorrect_password));
-                pwd.requestFocus();
-            }
-        }
+                @Override
+                public void onFinished() {
 
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
+                }
+            });
         }
     }
 

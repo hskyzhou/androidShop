@@ -1,5 +1,6 @@
 package me.hsky.androidshop.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -70,8 +71,11 @@ public class ProjectListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "增加商品数量", Toast.LENGTH_SHORT).show();
 
-                v.getContext().startActivity(new Intent(v.getContext(), UserLogin.class));
-                SharedUtils.setWelcomeBoolean(v.getContext(), true);
+//                v.getContext().startActivity(new Intent(v.getContext(), UserLogin.class));
+                Activity origin = (Activity)context;
+
+                origin.startActivityForResult(new Intent(context, UserLogin.class), 2);
+
             }
         });
 
