@@ -109,5 +109,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_welcome_start">WelcomeStartAct</string>
+    <string name="title_activity_userlogin">userlogin</string>
 </resources>
 
