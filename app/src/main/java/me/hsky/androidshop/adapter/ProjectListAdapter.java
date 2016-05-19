@@ -3,6 +3,7 @@ package me.hsky.androidshop.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import me.hsky.androidshop.utils.SharedUtils;
 /**
  * Created by user on 2016/5/9.
  */
-public class ProjectListAdapter extends BaseAdapter {
+public class ProjectListAdapter extends BaseAdapter{
     private LinkedList<Shop> projectList;
     private Context context;
     public ProjectListAdapter(LinkedList<Shop> projectList, Context context) {
@@ -72,9 +73,14 @@ public class ProjectListAdapter extends BaseAdapter {
                 Toast.makeText(v.getContext(), "增加商品数量", Toast.LENGTH_SHORT).show();
 
 //                v.getContext().startActivity(new Intent(v.getContext(), UserLogin.class));
-                Activity origin = (Activity)context;
+                /* 判断用户是否登录*/
+                if(!SharedUtils.getUserLoginStatus(context)){
+                    Activity origin = (Activity)context;
+                    origin.startActivityForResult(new Intent(context, UserLogin.class), 2);
+                }
 
-                origin.startActivityForResult(new Intent(context, UserLogin.class), 2);
+                /*增加进购物车*/
+
 
             }
         });

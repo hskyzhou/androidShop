@@ -1,16 +1,10 @@
 package me.hsky.androidshop;
 
-import android.os.AsyncTask;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Type;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -18,21 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import org.w3c.dom.Text;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import java.util.Collection;
-
 import me.hsky.androidshop.consts.CONSTS;
 import me.hsky.androidshop.data.ResponseLogin;
+import me.hsky.androidshop.utils.SharedUtils;
 
-public class UserLogin extends AppCompatActivity {
+public class UserLogin extends Activity {
     private static final String TAG = "tag";
     /*ui interface*/
     @ViewInject(R.id.username)
@@ -97,19 +88,17 @@ public class UserLogin extends AppCompatActivity {
             x.http().get(params, new Callback.CommonCallback<String>() {
                 @Override
                 public void onSuccess(String result) {
-                    Log.i(TAG, "onSuccess: " + result);
                     Gson gson = new Gson();
-//                    Type collectionType = (Type) new TypeToken<Collection<ResponseLogin>>(){}.getType();
-//                    Collection<ResponseLogin> loginInfo = gson.fromJson(result, (java.lang.reflect.Type) collectionType);
 
                     ResponseLogin loginInfo = gson.fromJson(result, ResponseLogin.class);
-                    Log.i(TAG, "onSuccess: " + loginInfo.message);
-                    Log.i(TAG, "onSuccess: " + loginInfo.result);
 
                     Toast.makeText(getBaseContext(), loginInfo.message, Toast.LENGTH_SHORT).show();
-                    if (loginInfo.result == "1") {
+                    if (1 == loginInfo.result) {
                         /*返回上一个activity*/
-
+                        /*记录登录状态*/
+                        SharedUtils.setUserLoginStatus(getBaseContext(), true);
+                        setResult(2, new Intent());
+                        finish();
                     }
                 }
 
