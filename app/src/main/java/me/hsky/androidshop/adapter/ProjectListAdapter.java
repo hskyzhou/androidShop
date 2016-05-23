@@ -3,6 +3,7 @@ package me.hsky.androidshop.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ import me.hsky.androidshop.utils.SharedUtils;
 /**
  * Created by user on 2016/5/9.
  */
-public class ProjectListAdapter extends BaseAdapter {
+public class ProjectListAdapter extends BaseAdapter{
     private LinkedList<Shop> projectList;
     private Context context;
     public ProjectListAdapter(LinkedList<Shop> projectList, Context context) {
@@ -77,8 +78,6 @@ public class ProjectListAdapter extends BaseAdapter {
 
                     origin.startActivityForResult(new Intent(context, UserLogin.class), 2);
                 }
-
-
             }
         });
 

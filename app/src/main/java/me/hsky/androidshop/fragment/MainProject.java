@@ -25,7 +25,6 @@ import java.util.LinkedList;
 
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.adapter.ProjectListAdapter;
-import me.hsky.androidshop.adapter.ProjectSecondCataAdapter;
 import me.hsky.androidshop.consts.CONSTS;
 import me.hsky.androidshop.data.ResponseProjectFirstCatagory;
 import me.hsky.androidshop.data.Shop;
