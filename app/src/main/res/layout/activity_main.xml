@@ -26,11 +26,9 @@
             android:button="@null"
             android:drawableTop="@drawable/selector_home"
             android:gravity="center"
-            android:drawablePadding="12dp"
-            android:paddingTop="18dp"
-            android:paddingBottom="18dp"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
+            android:drawablePadding="4dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             />
         <RadioButton
             android:id="@+id/main_project"
@@ -41,11 +39,9 @@
             android:button="@null"
             android:drawableTop="@drawable/selector_project"
             android:gravity="center"
-            android:drawablePadding="12dp"
-            android:paddingTop="18dp"
-            android:paddingBottom="18dp"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
+            android:drawablePadding="4dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             />
         <RadioButton
             android:id="@+id/main_buy"
@@ -56,11 +52,9 @@
             android:button="@null"
             android:drawableTop="@drawable/selector_buy"
             android:gravity="center"
-            android:drawablePadding="12dp"
-            android:paddingTop="18dp"
-            android:paddingBottom="18dp"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
+            android:drawablePadding="4dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             />
         <RadioButton
             android:id="@+id/main_me"
@@ -71,11 +65,9 @@
             android:button="@null"
             android:drawableTop="@drawable/selector_me"
             android:gravity="center"
-            android:drawablePadding="12dp"
-            android:paddingTop="18dp"
-            android:paddingBottom="18dp"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
+            android:drawablePadding="4dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
             />
     </RadioGroup>
 </LinearLayout>

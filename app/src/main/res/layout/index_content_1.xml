@@ -10,15 +10,15 @@
         android:id="@+id/index_content_img_1"
         android:background="#ccc"
         android:layout_width="match_parent"
-        android:layout_height="125dp" />
+        android:layout_height="100dp" />
     <TextView
         android:id="@+id/index_content_word_1"
         android:text="产品1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="15dp"/>
     <TextView
         android:id="@+id/index_content_money_1"
         android:text="1000元"
@@ -27,8 +27,8 @@
         android:layout_gravity="right"
         android:gravity="right"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        android:textSize="14sp"
         android:textColor="#1d91bc"
         />
 </LinearLayout>

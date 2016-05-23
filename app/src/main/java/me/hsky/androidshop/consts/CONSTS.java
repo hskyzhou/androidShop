@@ -10,7 +10,9 @@ public class CONSTS {
 
     public static final String LoginUrl = HOST + "login";
 
-    public static final String FirstCatagory = HOST + "firstcata";
+    /*一级分类*/
+    public static final String FirstCatagory = "http://115.28.62.199/iData/iData_Json.ashx";
+//    public static final String FirstCatagory = HOST + "firstcata";
     public static final String SecondCatagory = HOST + "secondcata";
     public static final String ProjectListUrl = HOST + "projectlist";
 }

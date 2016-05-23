@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        >
+        android:paddingBottom="10dp">
             <TextView
                 android:id="@+id/index_top_city"
                 android:scaleX="0.8"
@@ -61,14 +60,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/pic"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"/>
+                android:layout_height="120dp"/>
 
             <!--4个图标-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp">
 
                 <LinearLayout
@@ -169,21 +168,20 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="10dp">
 
                 <RelativeLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:layout_marginBottom="20dp"
-                    >
+                    android:layout_marginBottom="20dp">
 
                     <TextView
                         android:text="限量秒杀"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center_horizontal"/>
@@ -193,7 +191,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_centerVertical="true"
                         android:textColor="#bfbfbf"
                         android:layout_marginRight="20dp"/>
@@ -209,8 +207,7 @@
                         android:id="@+id/content_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numColumns="3"
-                        >
+                        android:numColumns="3">
                     </GridView>
                 </LinearLayout>
 
@@ -234,14 +231,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:layout_marginBottom="20dp"
-                    >
+                    android:layout_marginBottom="20dp">
 
                     <TextView
                         android:text="分类促销"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:gravity="center_horizontal"/>
@@ -251,7 +247,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_centerVertical="true"
                         android:textColor="#bfbfbf"
                         android:layout_marginRight="20dp"/>
@@ -268,7 +264,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:numColumns="3">
-
                     </GridView>
                 </LinearLayout>
 
@@ -295,7 +290,7 @@
                         android:text="分类促销"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="26sp"
+                        android:textSize="22sp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
@@ -306,7 +301,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_centerVertical="true"
                         android:textColor="#bfbfbf"
                         android:layout_marginRight="20dp"/>

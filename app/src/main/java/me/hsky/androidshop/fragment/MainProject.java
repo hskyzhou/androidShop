@@ -27,6 +27,7 @@ import me.hsky.androidshop.R;
 import me.hsky.androidshop.adapter.ProjectListAdapter;
 import me.hsky.androidshop.adapter.ProjectSecondCataAdapter;
 import me.hsky.androidshop.consts.CONSTS;
+import me.hsky.androidshop.data.ResponseProjectFirstCatagory;
 import me.hsky.androidshop.data.Shop;
 
 public class MainProject extends Fragment {
@@ -44,7 +45,7 @@ public class MainProject extends Fragment {
     private ListView project_content_list;
 
     private final String TAG = "tag";
-    private String[] firstCatas = null;
+    private ResponseProjectFirstCatagory firstCatas = null;
     private String[] secondCatas = null;
 
     private LinkedList<Shop> shopList;
@@ -62,12 +63,12 @@ public class MainProject extends Fragment {
     /*显示一级分类*/
     private void showFirstCata() {
         FirstCataHolder firstCataHolder = null;
-        for (int i = 0; i < firstCatas.length; i++) {
+        for (int i = 0; i < firstCatas.iData.size(); i++) {
             firstCataHolder = new FirstCataHolder();
             View itemView = LayoutInflater.from(getContext()).inflate(R.layout.project_first_catagory_item, null);
             x.view().inject(firstCataHolder, itemView);
             itemView.setTag(firstCataHolder);
-            firstCataHolder.project_item_first_catagory_text.setText(firstCatas[i]);
+            firstCataHolder.project_item_first_catagory_text.setText(firstCatas.iData.get(0).classifyName);
             if (0 == i) {
                 firstCataHolder.project_item_first_catagory_text.setTextColor(getResources().getColor(R.color.colorProjectCataWord));
                 firstCataHolder.project_item_first_catagory_text.setEnabled(false);
@@ -86,7 +87,7 @@ public class MainProject extends Fragment {
                     newHolder.project_item_first_catagory_text.setTextColor(getResources().getColor(R.color.colorProjectCataWord));
                     newHolder.project_item_first_catagory_text.setEnabled(false);
 
-                    initSecondCatagory(firstCatas[number] + "");
+                    initSecondCatagory(firstCatas.iData.get(0).ID + "");
                 }
             });
 
@@ -101,9 +102,9 @@ public class MainProject extends Fragment {
             @Override
             public void onSuccess(String result) {
                 Gson gson = new Gson();
-                firstCatas = gson.fromJson(result, String[].class);
+                firstCatas = gson.fromJson(result, ResponseProjectFirstCatagory.class);
                 showFirstCata();
-                initSecondCatagory(firstCatas[0]);
+                initSecondCatagory(firstCatas.iData.get(0).ID);
             }
 
             @Override

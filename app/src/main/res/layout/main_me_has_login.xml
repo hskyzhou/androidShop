@@ -1,35 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
     android:scrollbars="none">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="me.hsky.androidshop.fragment.MainProject">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="me.hsky.androidshop.fragment.MainProject">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/me_top_head"
             android:background="@color/ColorHeader"
-            android:layout_centerHorizontal="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/me_login_btn"
-                android:text="登录"
+            android:paddingTop="30dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="30dp">
+
+            <ImageView
+                android:id="@+id/me_has_head"
+                android:src="@drawable/head"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/me_login_round"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
+                android:background="@drawable/me_login_round"/>
+
+            <TextView
+                android:id="@+id/me_has_name1"
+                android:layout_toRightOf="@id/me_has_head"
+                android:text="素面朝天"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textColor="#fff"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/me_has_name2"
+                android:layout_toRightOf="@id/me_has_head"
+                android:layout_below="@+id/me_has_name1"
+                android:text="高老板"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
                 android:textColor="#fff"/>
-        </LinearLayout>
+
+            <TextView
+                android:id="@+id/me_has_phone"
+                android:layout_below="@+id/me_has_head"
+                android:text="12345678912"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="40dp"
+                android:drawableLeft="@drawable/phonenumber"
+                android:drawablePadding="10dp"
+                android:textColor="#fff"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/me_has_depart"
+                android:layout_below="@id/me_has_phone"
+                android:text="上海市徐汇区"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:drawableLeft="@drawable/address"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:drawablePadding="10sp"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/me_body_1"
@@ -46,6 +92,7 @@
                 android:background="@drawable/me_button_list_background"
                 android:gravity="center_vertical"
                 android:drawableLeft="@drawable/allorders"
+                android:drawableRight="@drawable/key"
                 android:drawablePadding="15dp"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
@@ -177,5 +224,28 @@
                 android:textSize="20sp"/>
         </LinearLayout>
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/me_body_4"
+            android:layout_below="@+id/me_body_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/ColorHeader"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <Button
+                android:id="@+id/logout"
+                android:text="退出登录"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@color/ColorHeader"
+                android:textSize="20sp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:textColor="#fff"/>
+        </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

@@ -72,9 +72,12 @@ public class ProjectListAdapter extends BaseAdapter {
                 Toast.makeText(v.getContext(), "增加商品数量", Toast.LENGTH_SHORT).show();
 
 //                v.getContext().startActivity(new Intent(v.getContext(), UserLogin.class));
-                Activity origin = (Activity)context;
+                if(!SharedUtils.getWelcomeBoolean(v.getContext())){
+                    Activity origin = (Activity)context;
 
-                origin.startActivityForResult(new Intent(context, UserLogin.class), 2);
+                    origin.startActivityForResult(new Intent(context, UserLogin.class), 2);
+                }
+
 
             }
         });
