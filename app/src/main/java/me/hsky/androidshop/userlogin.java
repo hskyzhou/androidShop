@@ -81,13 +81,13 @@ public class UserLogin extends Activity {
         } else {
             /*调用接口--进行登录*/
             RequestParams params = new RequestParams(CONSTS.LoginUrl);
-
             params.addQueryStringParameter("username",email );
             params.addQueryStringParameter("password", password);
             Log.i(TAG, "attemptLogin: " + params);
             x.http().get(params, new Callback.CommonCallback<String>() {
                 @Override
                 public void onSuccess(String result) {
+                    Log.i(TAG, "onSuccess: " + result);
                     Gson gson = new Gson();
 
                     ResponseLogin loginInfo = gson.fromJson(result, ResponseLogin.class);

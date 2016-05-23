@@ -22,7 +22,7 @@ public class MainBuy extends Fragment {
 
         x.view().inject(this, view);
 
-        if(!SharedUtils.getWelcomeBoolean(getContext())){
+        if(!SharedUtils.getUserLoginStatus(getContext())){
             startActivityForResult(new Intent(getContext(), UserLogin.class), 2);
         }
 
