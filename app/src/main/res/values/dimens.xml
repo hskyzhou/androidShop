@@ -5,4 +5,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp80">80dp</dimen>
+
+    <!--forget password-->
+    <dimen name="forget_margin_left">70dp</dimen>
 </resources>
+

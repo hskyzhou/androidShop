@@ -19,13 +19,8 @@ public class MainBuy extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_buy, null);
-
+        x.Ext.init(getActivity().getApplication());
         x.view().inject(this, view);
-
-        if(!SharedUtils.getUserLoginStatus(getContext())){
-            startActivityForResult(new Intent(getContext(), UserLogin.class), 2);
-        }
-
         /*显示购物车*/
         return view;
     }

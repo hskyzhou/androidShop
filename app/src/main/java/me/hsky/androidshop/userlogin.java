@@ -33,13 +33,22 @@ public class UserLogin extends Activity {
     @ViewInject(R.id.btnLogin)
     private Button btnLogin;
 
+    @ViewInject(R.id.forgetpass_btn)
+    private TextView forgetPassBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
 
+        x.Ext.init(getApplication());
         /*引入注解*/
         x.view().inject(this);
+    }
+
+    @Event(R.id.forgetpass_btn)
+    private void onForgetPassBtn(View v){
+        startActivity(new Intent(getBaseContext(), Forgetpassword.class));
     }
 
     @Event(R.id.btnLogin)
@@ -97,7 +106,7 @@ public class UserLogin extends Activity {
                         /*返回上一个activity*/
                         /*记录登录状态*/
                         SharedUtils.setUserLoginStatus(getBaseContext(), true);
-                        setResult(2, new Intent());
+                        setResult(1, new Intent());
                         finish();
                     }
                 }

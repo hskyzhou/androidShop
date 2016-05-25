@@ -80,6 +80,7 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/forgetpass_btn"
                 android:textSize="17sp"
                 android:text="忘记密码?"
                 android:layout_width="wrap_content"
