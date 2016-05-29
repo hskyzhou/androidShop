@@ -49,10 +49,12 @@
         <activity
             android:name=".UserLogin"
             android:label="@string/title_activity_userlogin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Forgetpassword"
-            android:label="@string/title_activity_forgetpassword"></activity>
+            android:label="@string/title_activity_forgetpassword" />
+        <activity android:name=".Reigster" />
+        <activity android:name=".Register"></activity>
     </application>
 
 </manifest>

@@ -9,6 +9,12 @@
     <dimen name="dp80">80dp</dimen>
 
     <!--forget password-->
-    <dimen name="forget_margin_left">70dp</dimen>
+    <dimen name="forget_margin_left">60dp</dimen>
+    <dimen name="drawable10">10dp</dimen>
+    <dimen name="height40">40dp</dimen>
+    <dimen name="textsize14">14sp</dimen>
+    <dimen name="testheight">40dp</dimen>
+    <dimen name="textsize">14sp</dimen>
+    <dimen name="buy_project_result">15dp</dimen>
 </resources>
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:id="@+id/buy_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/me_button_list_background"
+        android:layout_marginBottom="30dp">
+        <TextView
+            android:id="@+id/buy_project_category"
+            android:text="产品类别1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="#4c4c4c"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:text="全部删除"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textSize="12sp"
+            android:textColor="#a6a6a6"/>
+    </LinearLayout>
+</RelativeLayout>

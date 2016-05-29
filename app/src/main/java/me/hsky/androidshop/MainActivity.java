@@ -73,9 +73,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     public void changeFragment(Fragment fragment, boolean isInit){
         FragmentTransaction transaction = fm.beginTransaction();
-
         transaction.replace(R.id.main_page, fragment);
-
         transaction.commit();
     }
 
@@ -84,6 +82,13 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 2){
             changeFragment(new MainBuy(), true);
+        }
+        if(requestCode == 1){
+            changeFragment(new MainHome(), true);
+        }
+
+        if(requestCode == 4){
+            changeFragment(new MainHome(), true);
         }
     }
 }

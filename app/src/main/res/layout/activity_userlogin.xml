@@ -18,62 +18,92 @@
         android:layout_below="@id/login_logo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/forget_margin_left"
+        android:paddingRight="@dimen/forget_margin_left">
 
         <LinearLayout
-            android:layout_width="260dp"
-            android:layout_height="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:orientation="vertical"
             android:background="@drawable/login_round"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
-            <android.support.design.widget.TextInputLayout
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content">
-                <AutoCompleteTextView
-                    android:id="@+id/username"
-                    android:layout_width="230dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="#FFFFFF"
-                    android:drawableLeft="@drawable/phone"
-                    android:drawablePadding="10dp"
-                    android:hint="请输入您的用户名"
-                    android:textColor="#3D3D3D"
-                    android:textColorHint="#A3B1CA"
-                    android:textSize="15sp" >
-                </AutoCompleteTextView>
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+            <EditText
+                android:id="@+id/username"
                 android:layout_width="230dp"
-                android:layout_height="1dp"
-                android:background="#ccc"
-                android:layout_gravity="center">
-            </TextView>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/pwd"
-                    android:layout_width="230dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="#FFFFFF"
-                    android:drawableLeft="@drawable/key"
-                    android:drawablePadding="10dp"
-                    android:hint="请输入您的密码  "
-                    android:inputType="textPassword"
-                    android:textColorHint="#A3B1CA"
-                    android:textSize="15sp" >
-                </EditText>
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/phone"
+                android:drawablePadding="10dp"
+                android:hint="请输入您的用户名"
+                android:textColor="#3D3D3D"
+                android:textColorHint="#A3B1CA"
+                android:height="@dimen/testheight"
+                android:textSize="@dimen/textsize"
+                android:background="@drawable/login_bottom_line"/>
+            <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="wrap_content">-->
+                <!--<AutoCompleteTextView-->
+                    <!--android:id="@+id/username"-->
+                    <!--android:layout_width="230dp"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:background="#FFFFFF"-->
+                    <!--android:drawableLeft="@drawable/phone"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:hint="请输入您的用户名"-->
+                    <!--android:textColor="#3D3D3D"-->
+                    <!--android:textColorHint="#A3B1CA"-->
+                    <!--android:textSize="15sp" >-->
+                <!--</AutoCompleteTextView>-->
+            <!--</android.support.design.widget.TextInputLayout>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="230dp"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="#ccc"-->
+                <!--android:layout_gravity="center">-->
+            <!--</TextView>-->
+
+            <EditText
+                android:id="@+id/pwd"
+                android:layout_width="230dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#FFFFFF"
+                android:drawableLeft="@drawable/key"
+                android:drawablePadding="10dp"
+                android:hint="请输入您的密码  "
+                android:inputType="textPassword"
+                android:textColorHint="#A3B1CA"
+                android:height="@dimen/testheight"
+                android:textSize="@dimen/textsize" />
+
+            <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+                <!--<EditText-->
+                    <!--android:id="@+id/pwd"-->
+                    <!--android:layout_width="230dp"-->
+                    <!--android:layout_height="45dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:background="#FFFFFF"-->
+                    <!--android:drawableLeft="@drawable/key"-->
+                    <!--android:drawablePadding="10dp"-->
+                    <!--android:hint="请输入您的密码  "-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:textColorHint="#A3B1CA"-->
+                    <!--android:textSize="15sp" >-->
+                <!--</EditText>-->
+            <!--</android.support.design.widget.TextInputLayout>-->
         </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="240dp"
+            android:layout_width="match_parent"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -88,6 +118,7 @@
                 android:textColor="@color/white"
                 android:layout_alignParentLeft="true"/>
             <TextView
+                android:id="@+id/register_btn"
                 android:textSize="17sp"
                 android:text="注册"
                 android:layout_width="wrap_content"
@@ -98,7 +129,7 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"

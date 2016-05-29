@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +28,9 @@ public class UserLogin extends Activity {
     private static final String TAG = "tag";
     /*ui interface*/
     @ViewInject(R.id.username)
-    private AutoCompleteTextView username;
+    private EditText username;
     @ViewInject(R.id.pwd)
-    private TextView pwd;
+    private EditText pwd;
     @ViewInject(R.id.btnLogin)
     private Button btnLogin;
 
@@ -51,9 +52,13 @@ public class UserLogin extends Activity {
         startActivity(new Intent(getBaseContext(), Forgetpassword.class));
     }
 
+    @Event(R.id.register_btn)
+    private void onRegisterBtn(View v){
+        startActivity(new Intent(getBaseContext(), Register.class));
+    }
+
     @Event(R.id.btnLogin)
     private void onLoginClick(View view){
-//        Toast.makeText(getBaseContext(), "点击登录", Toast.LENGTH_SHORT).show();
         attemptLogin();
     }
 

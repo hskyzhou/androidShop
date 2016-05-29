@@ -1,5 +1,6 @@
 package me.hsky.androidshop;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import java.util.TimerTask;
 
 import me.hsky.androidshop.utils.SharedUtils;
 
-public class WelcomeStartAct extends AppCompatActivity {
+public class WelcomeStartAct extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
