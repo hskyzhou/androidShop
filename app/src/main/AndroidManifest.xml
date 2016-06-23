@@ -54,7 +54,8 @@
             android:name=".Forgetpassword"
             android:label="@string/title_activity_forgetpassword" />
         <activity android:name=".Reigster" />
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".ProjectDetail"></activity>
     </application>
 
 </manifest>

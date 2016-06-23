@@ -101,7 +101,9 @@ public class MainProject extends Fragment {
             @Override
             public void onSuccess(String result) {
                 Gson gson = new Gson();
+                Log.i(TAG, "onSuccess: " + result);
                 firstCatas = gson.fromJson(result, ResponseProjectFirstCatagory.class);
+                Log.i(TAG, "onSuccess: " + firstCatas);
                 showFirstCata();
                 initSecondCatagory(firstCatas.iData.get(0).ID);
             }

@@ -23,6 +23,7 @@ import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import me.hsky.androidshop.ProjectDetail;
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.UserLogin;
 import me.hsky.androidshop.consts.CONSTS;
@@ -82,6 +83,13 @@ public class MainBuy extends Fragment {
                             cartContentHolder.buy_project_price.setText(cartInfo.cart.get(i).shops.get(j).shop_price);
                             cartContentHolder.buy_project_price_desc.setText(cartInfo.cart.get(i).shops.get(j).shop_standard);
                             cartContentHolder.buy_number.setText("" + cartInfo.cart.get(i).shops.get(j).shop_number);
+                            cartContentHolder.buy_image.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    getContext().startActivity(new Intent(getContext(), ProjectDetail.class));
+                                }
+                            });
                             cart_show.addView(contentView1);
                         }
                     }

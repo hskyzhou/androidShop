@@ -1,5 +1,8 @@
 package me.hsky.androidshop.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import org.xutils.x;
 
 import java.util.LinkedList;
 
+import me.hsky.androidshop.ProjectDetail;
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.data.Shop;
 
@@ -20,9 +24,11 @@ import me.hsky.androidshop.data.Shop;
  */
 public class IndexSalePromotion extends BaseAdapter {
     private LinkedList<Shop> mData;
+    private Context context;
 
-    public IndexSalePromotion(LinkedList<Shop> mData){
+    public IndexSalePromotion(LinkedList<Shop> mData, Context context){
         this.mData = mData;
+        this.context = context;
     }
 
     @Override
@@ -55,6 +61,15 @@ public class IndexSalePromotion extends BaseAdapter {
         myHolder.image.setImageResource(mData.get(position).getImg());
         myHolder.name.setText(mData.get(position).getName());
         myHolder.price.setText(mData.get(position).getPrice());
+
+        myHolder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity origin = (Activity) context;
+
+                origin.startActivity(new Intent(context, ProjectDetail.class));
+            }
+        });
         return convertView;
     }
 

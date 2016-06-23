@@ -16,5 +16,6 @@
     <dimen name="testheight">40dp</dimen>
     <dimen name="textsize">14sp</dimen>
     <dimen name="buy_project_result">15dp</dimen>
+    <dimen name="dp10">10dp</dimen>
 </resources>
 

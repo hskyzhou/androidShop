@@ -11,5 +11,4 @@ public class ResponseProjectFirstCatagory {
         public String ID;
         public String classifyName;
     }
-
 }

@@ -75,9 +75,9 @@ public class MainHome extends Fragment implements LocationListener {
         mData1.add(new Shop("产品2", "2000", R.drawable.buy));
         mData1.add(new Shop("产品3", "3000", R.drawable.buy));
 
-        content_1.setAdapter(new IndexContent((LinkedList<Shop>) mData1));
-        index_sale_promotion.setAdapter(new IndexSalePromotion((LinkedList<Shop>) mData1));
-        index_sale_promotion_small.setAdapter(new IndexSalePromotionSmall((LinkedList<Shop>) mData1));
+        content_1.setAdapter(new IndexContent((LinkedList<Shop>) mData1, getContext()));
+        index_sale_promotion.setAdapter(new IndexSalePromotion((LinkedList<Shop>) mData1, getContext()));
+        index_sale_promotion_small.setAdapter(new IndexSalePromotionSmall((LinkedList<Shop>) mData1, getContext()));
 
         return view;
     }

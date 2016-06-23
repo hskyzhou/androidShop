@@ -18,6 +18,7 @@ import org.xutils.x;
 
 import java.util.LinkedList;
 
+import me.hsky.androidshop.ProjectDetail;
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.UserLogin;
 import me.hsky.androidshop.data.Shop;
@@ -67,6 +68,14 @@ public class ProjectListAdapter extends BaseAdapter{
         myHolder.project_price_unit.setText(projectList.get(position).getPrice() + "/" + projectList.get(position).getUnit());
         myHolder.project_standard.setText(projectList.get(position).getStandard());
 
+        myHolder.project_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity origin = (Activity) context;
+
+                origin.startActivity(new Intent(context, ProjectDetail.class));
+            }
+        });
         myHolder.project_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
