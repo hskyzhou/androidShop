@@ -9,21 +9,17 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.SettingInjectorService;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import org.xutils.view.annotation.Event;
@@ -33,14 +29,13 @@ import org.xutils.x;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
+import me.hsky.androidshop.CityActivity;
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.adapter.IndexContent;
 import me.hsky.androidshop.adapter.IndexSalePromotion;
 import me.hsky.androidshop.adapter.IndexSalePromotionSmall;
 import me.hsky.androidshop.data.Shop;
-import me.hsky.androidshop.utils.MyUtils;
 import me.hsky.androidshop.utils.SharedUtils;
 
 public class MainHome extends Fragment implements LocationListener {
@@ -75,9 +70,9 @@ public class MainHome extends Fragment implements LocationListener {
         mData1.add(new Shop("产品2", "2000", R.drawable.buy));
         mData1.add(new Shop("产品3", "3000", R.drawable.buy));
 
-        content_1.setAdapter(new IndexContent((LinkedList<Shop>) mData1));
-        index_sale_promotion.setAdapter(new IndexSalePromotion((LinkedList<Shop>) mData1));
-        index_sale_promotion_small.setAdapter(new IndexSalePromotionSmall((LinkedList<Shop>) mData1));
+        content_1.setAdapter(new IndexContent((LinkedList<Shop>) mData1, getContext()));
+        index_sale_promotion.setAdapter(new IndexSalePromotion((LinkedList<Shop>) mData1, getContext()));
+        index_sale_promotion_small.setAdapter(new IndexSalePromotionSmall((LinkedList<Shop>) mData1, getContext()));
 
         return view;
     }
@@ -195,5 +190,9 @@ public class MainHome extends Fragment implements LocationListener {
 
     }
 
+    @Event(R.id.index_top_city)
+    private void selectCity(View v) {
+        getContext().startActivity(new Intent(getContext(), CityActivity.class));
+    }
 
 }

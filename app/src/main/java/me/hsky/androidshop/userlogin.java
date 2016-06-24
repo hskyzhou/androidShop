@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,28 +23,44 @@ import me.hsky.androidshop.consts.CONSTS;
 import me.hsky.androidshop.data.ResponseLogin;
 import me.hsky.androidshop.utils.SharedUtils;
 
-public class UserLogin extends Activity {
+/**
+ * Created by user on 2016/6/24.
+ */
+public class UserLogin extends Activity{
     private static final String TAG = "tag";
     /*ui interface*/
     @ViewInject(R.id.username)
-    private AutoCompleteTextView username;
+    private EditText username;
     @ViewInject(R.id.pwd)
-    private TextView pwd;
+    private EditText pwd;
     @ViewInject(R.id.btnLogin)
     private Button btnLogin;
+
+    @ViewInject(R.id.forgetpass_btn)
+    private TextView forgetPassBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
 
+        x.Ext.init(getApplication());
         /*引入注解*/
         x.view().inject(this);
     }
 
+    @Event(R.id.forgetpass_btn)
+    private void onForgetPassBtn(View v){
+        startActivity(new Intent(getBaseContext(), Forgetpassword.class));
+    }
+
+    @Event(R.id.register_btn)
+    private void onRegisterBtn(View v){
+        startActivity(new Intent(getBaseContext(), Register.class));
+    }
+
     @Event(R.id.btnLogin)
     private void onLoginClick(View view){
-//        Toast.makeText(getBaseContext(), "点击登录", Toast.LENGTH_SHORT).show();
         attemptLogin();
     }
 
@@ -97,7 +113,7 @@ public class UserLogin extends Activity {
                         /*返回上一个activity*/
                         /*记录登录状态*/
                         SharedUtils.setUserLoginStatus(getBaseContext(), true);
-                        setResult(2, new Intent());
+                        setResult(1, new Intent());
                         finish();
                     }
                 }

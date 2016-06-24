@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_marginTop="20dp">
+
+    <TextView
+        android:id="@+id/buy_project_result_total_number_word"
+        android:text="品类数："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/buy_project_result"
+        android:paddingLeft="@dimen/buy_project_result"
+        android:paddingRight="@dimen/buy_project_result"
+        android:paddingBottom="@dimen/buy_project_result"
+        android:layout_gravity="left"
+        android:textSize="12sp"
+        android:textColor="#4c4c4c"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/buy_project_category_number"
+        android:layout_toRightOf="@id/buy_project_result_total_number_word"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/buy_project_result"
+        android:paddingLeft="@dimen/buy_project_result"
+        android:paddingRight="@dimen/buy_project_result"
+        android:paddingBottom="@dimen/buy_project_result"
+        android:layout_gravity="left"
+        android:textSize="12sp"
+        android:textColor="#4c4c4c"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:id="@+id/buy_project_price_word"
+        android:layout_toRightOf="@id/buy_project_category_number"
+        android:text="总价"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/buy_project_result"
+        android:paddingLeft="@dimen/buy_project_result"
+        android:paddingRight="@dimen/buy_project_result"
+        android:paddingBottom="@dimen/buy_project_result"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:textSize="12sp"
+        android:textColor="#a6a6a6"/>
+
+    <TextView
+        android:id="@+id/buy_project_total_price"
+        android:layout_toRightOf="@id/buy_project_price_word"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/buy_project_result"
+        android:paddingLeft="@dimen/buy_project_result"
+        android:paddingRight="@dimen/buy_project_result"
+        android:paddingBottom="@dimen/buy_project_result"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:textSize="14sp"
+        android:textColor="@color/ColorHeader"/>
+
+    <TextView
+        android:id="@+id/buy_project_result_submit"
+        android:text="立即购买"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/buy_project_result"
+        android:paddingLeft="@dimen/buy_project_result"
+        android:paddingRight="@dimen/buy_project_result"
+        android:paddingBottom="@dimen/buy_project_result"
+        android:layout_alignParentRight="true"
+        android:background="@color/ColorHeader"
+        android:textSize="16sp"/>
+</RelativeLayout>

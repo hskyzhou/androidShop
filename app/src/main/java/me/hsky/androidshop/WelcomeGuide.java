@@ -1,5 +1,6 @@
 package me.hsky.androidshop;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,7 +19,7 @@ import org.xutils.x;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WelcomeGuide extends AppCompatActivity {
+public class WelcomeGuide extends Activity {
     @ViewInject(R.id.welcome_btn)
     private Button btn;
 

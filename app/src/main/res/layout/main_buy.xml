@@ -7,6 +7,7 @@
     android:background="@color/ColorHeader">
 
     <LinearLayout
+        android:id="@+id/cart_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -20,4 +21,22 @@
             android:textSize="24sp"
             android:textColor="#fff"/>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_below="@id/cart_word"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="#f5f5f5">
+
+        <LinearLayout
+            android:id="@+id/cart_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
  </RelativeLayout>

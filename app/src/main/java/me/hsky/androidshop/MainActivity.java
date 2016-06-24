@@ -17,6 +17,7 @@ import me.hsky.androidshop.fragment.MainBuy;
 import me.hsky.androidshop.fragment.MainHome;
 import me.hsky.androidshop.fragment.MainMe;
 import me.hsky.androidshop.fragment.MainProject;
+import me.hsky.androidshop.utils.SharedUtils;
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener {
     @ViewInject(R.id.group_bottom_btn)
@@ -57,7 +58,11 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
                 changeFragment(new MainProject(), true);
                 break;
             case R.id.main_buy:
-                changeFragment(new MainBuy(), true);
+                if(!SharedUtils.getUserLoginStatus(getBaseContext())){
+                    startActivityForResult(new Intent(getBaseContext(), UserLogin.class), 2);
+                }else{
+                    changeFragment(new MainBuy(), true);
+                }
                 break;
             case R.id.main_me:
                 changeFragment(new MainMe(), true);
@@ -68,9 +73,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     public void changeFragment(Fragment fragment, boolean isInit){
         FragmentTransaction transaction = fm.beginTransaction();
-
         transaction.replace(R.id.main_page, fragment);
-
         transaction.commit();
     }
 
@@ -81,5 +84,15 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         Log.i(TAG, "onActivityResult: " + resultCode);
         Log.i(TAG, "onActivityResult: " + data);
 
+        if(requestCode == 2){
+            changeFragment(new MainBuy(), true);
+        }
+        if(requestCode == 1){
+            changeFragment(new MainHome(), true);
+        }
+
+        if(requestCode == 4){
+            changeFragment(new MainHome(), true);
+        }
     }
 }

@@ -13,6 +13,7 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import me.hsky.androidshop.MainActivity;
 import me.hsky.androidshop.R;
 import me.hsky.androidshop.UserLogin;
 import me.hsky.androidshop.utils.SharedUtils;
@@ -30,6 +31,8 @@ public class MainMe extends Fragment {
         if (SharedUtils.getUserLoginStatus(getContext())) {
 
             View view = inflater.inflate(R.layout.main_me_has_login, null);
+
+            x.Ext.init(getActivity().getApplication());
             x.view().inject(this, view);
             return view;
         } else {
@@ -43,12 +46,13 @@ public class MainMe extends Fragment {
     private void logoutClick(View view) {
         SharedUtils.setUserLoginStatus(getContext(), false);
         Toast.makeText(getContext(), "退出成功", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getContext(), UserLogin.class));
+        startActivity(new Intent(getContext(), MainActivity.class));
     }
 
     @Event(R.id.me_login_btn)
     private void loginClick(View view){
-        startActivityForResult(new Intent(getContext(), UserLogin.class), 2);
+        startActivityForResult(new Intent(getContext(), UserLogin.class), 1);
+        getActivity().finish();
     }
 
 }

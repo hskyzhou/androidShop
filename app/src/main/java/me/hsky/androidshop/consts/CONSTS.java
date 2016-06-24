@@ -11,9 +11,12 @@ public class CONSTS {
 
     public static final String LoginUrl = HOST + "login";
 
+    public static final String ForgetPassUrl = HOST + "forgetpass";
+    public static final String RegisterUrl = HOST + "register";
+    public static final String CartUrl = HOST + "cart";
     /*一级分类*/
-    public static final String FirstCatagory = OnLineHost + "?retype=qxclassify";
-//    public static final String FirstCatagory = HOST + "firstcata";
+//    public static final String FirstCatagory = OnLineHost + "?retype=qxclassify";
+    public static final String FirstCatagory = HOST + "firstcata";
     public static final String SecondCatagory = HOST + "secondcata";
     public static final String ProjectListUrl = HOST + "projectlist";
 }

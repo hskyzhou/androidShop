@@ -110,5 +110,6 @@
     </string>
     <string name="title_activity_welcome_start">WelcomeStartAct</string>
     <string name="title_activity_userlogin">userlogin</string>
+    <string name="title_activity_forgetpassword">Forgetpassword</string>
 </resources>
 
