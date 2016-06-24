@@ -3,7 +3,6 @@ package me.hsky.androidshop.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +31,6 @@ public class MainMe extends Fragment {
 
             View view = inflater.inflate(R.layout.main_me_has_login, null);
             x.view().inject(this, view);
-
-
             return view;
         } else {
             View view = inflater.inflate(R.layout.main_me, null);

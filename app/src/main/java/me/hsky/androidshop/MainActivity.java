@@ -1,10 +1,12 @@
 package me.hsky.androidshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -25,6 +27,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
     private FragmentManager fm;
     Fragment[] cacheFragment = new Fragment[4];
 
+    private static  final String TAG ="tag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,4 +74,12 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         transaction.commit();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, "onActivityResult: " + requestCode);
+        Log.i(TAG, "onActivityResult: " + resultCode);
+        Log.i(TAG, "onActivityResult: " + data);
+
+    }
 }
