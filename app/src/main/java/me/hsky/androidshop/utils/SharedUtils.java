@@ -24,7 +24,7 @@ public class SharedUtils {
 
     /*获取boolean类型的值*/
     public static String getCityName(Context context) {
-        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getString("cityName", "选择城市");
+        return context.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE).getString("cityName", "");
     }
 
     /*写入boolean类型的值*/

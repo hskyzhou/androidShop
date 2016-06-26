@@ -91,16 +91,17 @@
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
-    <orderEntry type="library" exported="" name="recyclerview-v7-23.2.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="xutils-3.3.32" level="project" />
+    <orderEntry type="library" exported="" name="design-23.2.1" level="project" />
+    <orderEntry type="library" exported="" name="recyclerview-v7-23.2.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-basement-8.1.0" level="project" />
+    <orderEntry type="library" exported="" name="AMap_Location_V2.5.1_20160616" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="animated-vector-drawable-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-23.2.1" level="project" />
-    <orderEntry type="library" exported="" name="design-23.2.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.2.1" level="project" />
   </component>
 </module>

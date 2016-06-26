@@ -24,7 +24,7 @@ import me.hsky.androidshop.data.ResponseLogin;
 import me.hsky.androidshop.utils.SharedUtils;
 
 /**
- * Created by user on 2016/6/24.
+ * Created by Administrator on 2016/6/24.
  */
 public class UserLogin extends Activity{
     private static final String TAG = "tag";

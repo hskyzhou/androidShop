@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "21.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "me.hsky.androidshop"
@@ -17,10 +17,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        //调试版的keystore
+        debug {
+            storeFile file("D:\\Project\\Android\\sha1.jks")
+            storePassword "123456"
+            keyAlias "sha1"
+            keyPassword "123456"
+        }
+        //发布版的keystore
+        release {
+            storeFile file("D:\\Project\\Android\\sha1.jks")
+            storePassword "123456"
+            keyAlias "sha1"
+            keyPassword "123456"
+        }
+    }
+
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
@@ -28,4 +47,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.google.code.gson:gson:2.2.+'
+    compile files('libs/AMap_Location_V2.5.1_20160616.jar')
 }

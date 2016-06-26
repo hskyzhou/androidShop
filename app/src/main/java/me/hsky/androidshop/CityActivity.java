@@ -1,6 +1,7 @@
 package me.hsky.androidshop;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import me.hsky.androidshop.adapter.SortAdapter;
 import me.hsky.androidshop.data.SortModel;
 import me.hsky.androidshop.utils.CharacterParser;
 import me.hsky.androidshop.utils.PinyinComparator;
+import me.hsky.androidshop.utils.SharedUtils;
 import me.hsky.androidshop.view.ClearEditText;
 import me.hsky.androidshop.view.SideBar;
 
@@ -49,13 +51,20 @@ public class CityActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
-        Log.i(TAG, "onCreate: 创建城市");
         initViews();
     }
 
     private void initViews() {
         //实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
+
+        pinyinComparator = new PinyinComparator();
+
+        sideBar = (SideBar) findViewById(R.id.sidrbar);
+        dialog = (TextView) findViewById(R.id.dialog);
+//        Log.i(TAG, "initViews: " + dialog);
+        sideBar.setTextView(dialog);
+
         //设置右侧触摸监听
         sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
 
@@ -77,7 +86,13 @@ public class CityActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 //这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                Toast.makeText(getApplication(), ((SortModel) adapter.getItem(position)).getName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplication(), ((SortModel)adapter.getItem(position)).getName(), Toast.LENGTH_SHORT).show();
+//                Intent intent=new Intent();
+//                intent.putExtra("cityName", ((SortModel)adapter.getItem(position)).getName());
+                SharedUtils.setCityName(getBaseContext(), ((SortModel)adapter.getItem(position)).getName());
+                Log.d(TAG, "onItemClick: " + SharedUtils.getCityName(getBaseContext()));
+//                setResult(RESULT_OK, intent);
+                finish();
             }
         });
 
