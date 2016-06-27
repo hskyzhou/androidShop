@@ -84,10 +84,15 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
         Log.i(TAG, "onActivityResult: " + resultCode);
         Log.i(TAG, "onActivityResult: " + data);
 
+        Log.i(TAG, "onActivityResult: " + SharedUtils.getCityName(getBaseContext()));
         if(requestCode == 2){
             changeFragment(new MainBuy(), true);
         }
         if(requestCode == 1){
+            changeFragment(new MainHome(), true);
+        }
+
+        if(requestCode == 3){
             changeFragment(new MainHome(), true);
         }
 

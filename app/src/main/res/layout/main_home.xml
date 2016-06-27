@@ -15,7 +15,6 @@
                 android:id="@+id/index_top_city"
                 android:scaleX="0.8"
                 android:scaleY="0.8"
-                android:text="选择城市"
                 android:drawableLeft="@drawable/locate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

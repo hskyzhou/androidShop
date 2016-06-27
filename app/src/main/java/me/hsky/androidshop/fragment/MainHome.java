@@ -21,12 +21,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,7 +46,8 @@ import me.hsky.androidshop.adapter.IndexSalePromotionSmall;
 import me.hsky.androidshop.data.Shop;
 import me.hsky.androidshop.utils.SharedUtils;
 
-public class MainHome extends Fragment implements LocationListener {
+public class MainHome extends Fragment implements AMapLocationListener{
+
     private static final String TAG = "tag";
     @ViewInject(R.id.index_top_city)
     private TextView topCity;
@@ -59,12 +68,22 @@ public class MainHome extends Fragment implements LocationListener {
 
     private List<Shop> mData1 = null;
 
+    public AMapLocationClient mLocationClient = null;
+
+    private double lat;
+    private double lon;
+
+    //声明mLocationOption对象
+    public AMapLocationClientOption mLocationOption = null;
+
+    public boolean isLocation = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_home, null);
         x.view().inject(this, view);
         /*获取数据并且显示*/
-        topCity.setText(SharedUtils.getCityName(getActivity()));
+
         mData1 = new LinkedList<Shop>();
         mData1.add(new Shop("产品1", "1000", R.drawable.buy));
         mData1.add(new Shop("产品2", "2000", R.drawable.buy));
@@ -81,29 +100,54 @@ public class MainHome extends Fragment implements LocationListener {
     public void onStart() {
         super.onStart();
         /*检查gps模块*/
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        boolean isOpen = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+//        cityName = aMapLocation.getCity();
 
-        /*没有打开gps*/
-        if (!isOpen) {
-            Intent intent = new Intent();
-            intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivityForResult(intent, 0);
+        Log.i(TAG, "onStart: 开始定位");
+        mLocationClient = new AMapLocationClient(getContext());
+        //初始化定位参数
+        mLocationOption = new AMapLocationClientOption();
+        mLocationClient.setLocationListener(this);
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
+
+//        mLocationOption.setInterval(2000);
+        //设置定位参数
+        mLocationClient.setLocationOption(mLocationOption);
+        mLocationClient.startLocation();
+
+        cityName = SharedUtils.getCityName(getActivity().getBaseContext());
+
+        Log.i(TAG, "onStart: " + cityName);
+        if(cityName.isEmpty()){
+            isLocation = false;
+        }else{
+            isLocation = true;
+            handler.sendEmptyMessage(1);
         }
 
-        /*开始定位*/
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
+
+//        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+//        boolean isOpen = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+//
+//        /*没有打开gps*/
+//        if (!isOpen) {
+//            Intent intent = new Intent();
+//            intent.setAction(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivityForResult(intent, 0);
+//        }
+//
+//        /*开始定位*/
+//        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
 
     }
 
@@ -111,19 +155,20 @@ public class MainHome extends Fragment implements LocationListener {
     public void onDestroy() {
         super.onDestroy();
         /*保存当前定位城市*/
-        SharedUtils.setCityName(getActivity(), cityName);
+//        SharedUtils.setCityName(getActivity(), cityName);
+//        Log.i(TAG, "onDestroy: 定位结束");
         /*结束定位*/
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        locationManager.removeUpdates(this);
+//        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        locationManager.removeUpdates(this);
     }
 
     /*接受并且处理消息*/
@@ -137,62 +182,36 @@ public class MainHome extends Fragment implements LocationListener {
         }
     });
 
-    /*位置信息更改*/
-    @Override
-    public void onLocationChanged(Location location) {
-        Log.i("tag", "location changed");
-        Log.i("tag", "onLocationChanged: " + location);
-        double lat = 0.0;
-        double lng = 0.0;
-        if(location != null){
-            lat = location.getLatitude();
-            lng = location.getLongitude();
-            Log.i(TAG, "经度是： " + lat + "纬度是：" + lng);
-        }else{
-            cityName = "北京市";
-        }
-        /*通过经纬度获取地址*/
-        List<Address> list = null;
-        Geocoder ge = new Geocoder(getActivity());
-
-        try {
-            list = ge.getFromLocation(lat, lng, 2);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Log.i(TAG, "list大小" + list.size());
-        if(list != null && list.size() > 0){
-            for (int i = 0; i< list.size(); i++) {
-                Address ad = list.get(i);
-                cityName = ad.getLocality();
-                Log.i(TAG, "城市名" + cityName);
-            }
-        }
-        handler.sendEmptyMessage(1);
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.i("tag", "status changed");
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-        Log.i("tag", "provider enable");
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-        Log.i("tag", "provider disable");
-
-    }
-
     @Event(R.id.index_top_city)
     private void selectCity(View v) {
-        getContext().startActivity(new Intent(getContext(), CityActivity.class));
+        getActivity().startActivityForResult(new Intent(getContext(), CityActivity.class), 3);
     }
 
+    @Override
+    public void onLocationChanged(AMapLocation aMapLocation) {
+        /*定位回调*/
+        if (aMapLocation != null && !isLocation) {
+            Log.i(TAG, "onLocationChanged: " + aMapLocation);
+            if (aMapLocation.getErrorCode() == 0) {
+                //定位成功回调信息，设置相关消息
+                aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
+                aMapLocation.getLatitude();//获取纬度
+                aMapLocation.getLongitude();//获取经度
+                aMapLocation.getAccuracy();//获取精度信息
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = new Date(aMapLocation.getTime());
+                df.format(date);//定位时间
+                cityName = aMapLocation.getCity();
+                handler.sendEmptyMessage(1);
+                isLocation = true;
+            } else {
+                //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
+                Log.i(TAG, "location Error, ErrCode:"
+                        + aMapLocation.getErrorCode() + ", errInfo:"
+                        + aMapLocation.getErrorInfo());
+                Toast.makeText(getActivity().getBaseContext(), aMapLocation.getErrorInfo(), Toast.LENGTH_SHORT).show();
+                isLocation = true;
+            }
+        }
+    }
 }
